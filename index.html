@@ -391,6 +391,22 @@ img{max-width:100%;border-radius:4px}
   text-align: center;
   margin-top: 18px;
 }
+  .day-spot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.day-spot > div:nth-child(2) {
+  flex: 1;
+}
+
+.spot-time {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
 
 </style>
 </head>
@@ -1074,7 +1090,7 @@ function generateItinerary() {
   }
 
   const CAP = 6;
-  const times = ["9:00 AM", "10:30 AM", "12:00 PM", "2:00 PM", "3:30 PM", "5:00 PM"];
+  
 
   let days = [];
   let day = [];
@@ -1120,8 +1136,8 @@ function generateItinerary() {
               <h4>${spot.name}</h4>
               <p>${spot.category}</p>
             </div>
-            <div>
-              ${times[idx] || ""} · ${spot.hours}h
+            <div class="spot-time">
+               ${spot.hours}h
             </div>
           </div>
         `).join("")}
@@ -1144,7 +1160,6 @@ function saveItinerary() {
   }
 
   const CAP = 6;
-  const times = ["9:00 AM", "10:30 AM", "12:00 PM", "2:00 PM", "3:30 PM", "5:00 PM"];
 
   let days = [];
   let day = [];
@@ -1222,7 +1237,7 @@ function saveItinerary() {
             <h5>${spot.name}</h5>
             <p>${spot.category}</p>
           </div>
-          <div class="spot-time">${times[idx] || ""} &bull; ${spot.hours}h</div>
+          <div class="spot-time"> ${spot.hours}h</div>
         </div>
       `).join("")}
     </div>
