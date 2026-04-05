@@ -357,15 +357,13 @@ img{max-width:100%;border-radius:4px}
   background: rgba(255,255,255,0.05);
 }
 
-/* 🔥 IMAGE FIX */
 .day-spot img {
   width: 80px;
   height: 60px;
-  object-fit: cover;   /* keeps image nice */
+  object-fit: cover;   
   border-radius: 8px;
 }
 
-/* Text spacing */
 .day-spot h4 {
   margin: 0;
   font-size: 14px;
@@ -761,14 +759,12 @@ function showPage(id) {
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 
-  // update active nav link
   document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
   const activeLink = document.querySelector(`.nav-link[onclick="showPage('${id}')"]`);
   if (activeLink) activeLink.classList.add("active");
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // load cities page content when navigating to it
   if (id === "cities") renderCitiesPage();
 }
 
@@ -799,7 +795,6 @@ function handleLogin() {
   const btn = document.querySelector(".btn-login");
   btn.innerHTML = `<i class="fa fa-user-circle"></i> ${username}`;
 
-  // optional: prevent reopening modal
   btn.onclick = null;
 
   showToast("Login successful!");
@@ -1058,11 +1053,9 @@ function filterH(type, btn) {
     filtered = currentHotels.filter(h => h.stars === 4);
   } 
   else if (type === "budget") {
-    // 👇 FIXED: include 3-star also
     filtered = currentHotels.filter(h => h.stars <= 3);
   }
 
-  // fallback if still empty
   if (filtered.length === 0) {
     showToast("No hotels found for this category");
     filtered = currentHotels;
